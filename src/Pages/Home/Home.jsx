@@ -1,8 +1,13 @@
+import Banner from "./Banner/Banner";
+import Showcase from "./Showcase/Showcase";
+import TopFeature from "./TopFeature/TopFeature";
 
 const Home = () => {
     return (
         <div>
-            This is Home
+            <Banner></Banner>
+            <TopFeature></TopFeature>
+            <Showcase></Showcase>
         </div>
     );
 };
