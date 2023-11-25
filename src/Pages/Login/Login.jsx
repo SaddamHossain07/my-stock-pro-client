@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
+import SocialLogin from "../../Authentication/SocialLogin/SocialLogin";
 
 const Login = () => {
     const { loginUser } = UseAuth()
@@ -77,10 +78,7 @@ const Login = () => {
                             <p className="mt-4">New to myStock Pro? <Link to='/register' className="border-b-2 border-violet-800 text-violet-800">Register</Link></p>
 
                             <div className="divider py-6">OR</div>
-                            <button className="border-2 border-purple-600 bg-slate-100 rounded-lg py-3 px-4 mt-4 flex gap-4 justify-center font-semibold w-full">
-                                <span><img className="h-6" src="https://i.ibb.co/1RHYhnL/download.png" alt="" /></span>
-                                Continue with Google
-                            </button>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                 </div>

@@ -84,9 +84,9 @@ const Navbar = () => {
                 {
                     user && <>
                         <div className="hidden md:flex items-center gap-4 ml-auto">
-                            <p>{user?.displayName}</p>
+                            <p className="font-semibold">{user?.displayName}</p>
                             <img className="w-12 h-12 rounded-full z-10" src={user?.photoURL} alt="" />
-                            <button onClick={handleLogOut} className="h-12 bg-purple-500 hover:bg-purple-600 text-white font-bold pl-8 pr-4 rounded-r-full -ml-9 z-5">Sign Out</button>
+                            <button onClick={handleLogOut} className="h-12 bg-purple-500 hover:bg-purple-600 text-white font-bold pl-8 pr-6 rounded-r-full -ml-9 z-5">Sign Out</button>
                         </div>
                     </>
                 }

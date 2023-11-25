@@ -1,19 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
+import SocialLogin from "../../Authentication/SocialLogin/SocialLogin";
 
 const Register = () => {
-
-    const { createUser } = UseAuth()
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { createUser, updateUserProfile } = UseAuth()
+    const { register, handleSubmit, reset, formState: { errors } } = useForm()
+    const axiosPublic = useAxiosPublic()
+    const navigate = useNavigate()
 
     const onSubmit = data => {
         console.log(data)
         createUser(data.email, data.password)
             .then(result => {
                 console.log('user created', result.user)
+                updateUserProfile(data.name, data.photo)
+                    .then(() => {
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                            photo: data.photo
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    reset()
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "User updated successfully",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/')
+                                }
+                            })
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
             })
             .catch(error => {
                 console.log(error)
@@ -68,10 +96,7 @@ const Register = () => {
                         <div>
                             <p className="mt-4">New to myStock Pro? <Link to='/login' className="border-b-2 border-violet-800 text-violet-800">Login here</Link></p>
                             <div className="divider py-6">OR</div>
-                            <button className="border-2 border-purple-600 bg-slate-100 rounded-lg py-3 px-4 mt-4 flex gap-4 justify-center font-semibold w-full">
-                                <span><img className="h-6" src="https://i.ibb.co/1RHYhnL/download.png" alt="" /></span>
-                                Continue with Google
-                            </button>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                 </div>
