@@ -1,8 +1,18 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/myStockLogo.png'
 import { MdOndemandVideo } from "react-icons/md";
+import { useContext } from 'react';
+import { AuthContext } from '../../Authentication/AuthProvider/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
+
     const navItems = <>
         <li>
             <NavLink to="/" className={({ isActive, isPending }) =>
@@ -49,7 +59,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center'>
                     <img className='h-12' src={logo} alt="" />
-                    <h3 className='text-3xl font-bold italic heading'>myStock Pro</h3>
+                    <h3 className='text-3xl font-bold heading'>myStock</h3>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -62,6 +72,15 @@ const Navbar = () => {
                     <MdOndemandVideo />
                     Watch Demo
                 </button>
+                {
+                    user && <>
+                        <div className="hidden md:flex items-center gap-4 ml-auto">
+                            <p>{user?.displayName}</p>
+                            <img className="w-12 h-12 rounded-full z-10" src={user?.photoURL} alt="" />
+                            <button onClick={handleLogOut} className="h-12 bg-purple-500 hover:bg-purple-600 text-white font-bold pl-8 pr-4 rounded-r-full -ml-9 z-5">Sign Out</button>
+                        </div>
+                    </>
+                }
             </div>
         </div>
     );

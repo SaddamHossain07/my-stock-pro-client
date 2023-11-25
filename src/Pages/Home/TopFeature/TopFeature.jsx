@@ -4,7 +4,7 @@ import { GiReturnArrow } from "react-icons/gi";
 
 const TopFeature = () => {
     return (
-        <div className="flex justify-around py-10">
+        <div className="flex gap-12 flex-col md:flex-row justify-around py-10">
             <div className="flex flex-col items-center justify-center">
                 <FaShippingFast className="text-4xl" />
                 <h3 className="font-bold pt-4 pb-2">Free shipping</h3>
