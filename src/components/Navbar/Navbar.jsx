@@ -1,8 +1,8 @@
-import { Link, NavLink } from 'react-router-dom';
-import logo from '../../assets/myStockLogo.png'
 import { MdOndemandVideo } from "react-icons/md";
 import { useContext } from 'react';
 import { AuthContext } from '../../Authentication/AuthProvider/AuthProvider';
+import Logo from "../Logo";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -21,23 +21,35 @@ const Navbar = () => {
             </NavLink>
         </li>
         <li>
-            <NavLink to="/login" className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
-            }>Login
-            </NavLink>
-        </li>
-        <li>
-            <NavLink to="/register" className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
-            }>Register
-            </NavLink>
-        </li>
-        <li>
             <NavLink to="/createStore" className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
             }>Create-Store
             </NavLink>
         </li>
+        {
+            user ? <>
+                <li>
+                    <NavLink to="/dashboard" className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                    }>Dashboard
+                    </NavLink>
+                </li>
+            </> : <>
+                <li>
+                    <NavLink to="/login" className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                    }>Login
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/register" className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                    }>Register
+                    </NavLink>
+                </li>
+            </>
+        }
+
     </>
 
     const handleWatchDemo = () => {
@@ -57,10 +69,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <div className='flex items-center'>
-                    <img className='h-12' src={logo} alt="" />
-                    <h3 className='text-3xl font-bold heading'>myStock</h3>
-                </div>
+                <Logo></Logo>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
