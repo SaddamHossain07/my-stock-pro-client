@@ -1,0 +1,83 @@
+[
+    {
+        "name": "Asus ZenBook Pro",
+        "image": "asus_zenbook_pro.jpg",
+        "quantity": 50,
+        "location": "Warehouse A",
+        "production_cost": 1200,
+        "profit_margin": 0.2,
+        "discount": 0.1
+    },
+    {
+        "name": "Asus ROG Strix",
+        "image": "asus_rog_strix.jpg",
+        "quantity": 30,
+        "location": "Warehouse B",
+        "production_cost": 1500,
+        "profit_margin": 0.15,
+        "discount": 0.05
+    },
+    {
+        "name": "Asus VivoBook",
+        "image": "asus_vivobook.jpg",
+        "quantity": 40,
+        "location": "Warehouse C",
+        "production_cost": 800,
+        "profit_margin": 0.25,
+        "discount": 0.12
+    },
+    {
+        "name": "HP Spectre x360",
+        "image": "hp_spectre_x360.jpg",
+        "quantity": 45,
+        "location": "Warehouse A",
+        "production_cost": 1300,
+        "profit_margin": 0.18,
+        "discount": 0.08
+    },
+    {
+        "name": "HP Pavilion",
+        "image": "hp_pavilion.jpg",
+        "quantity": 35,
+        "location": "Warehouse B",
+        "production_cost": 1000,
+        "profit_margin": 0.22,
+        "discount": 0.1
+    },
+    {
+        "name": "HP Elite Dragonfly",
+        "image": "hp_elite_dragonfly.jpg",
+        "quantity": 25,
+        "location": "Warehouse C",
+        "production_cost": 1800,
+        "profit_margin": 0.12,
+        "discount": 0.06
+    },
+    {
+        "name": "MacBook Pro",
+        "image": "macbook_pro.jpg",
+        "quantity": 60,
+        "location": "Warehouse A",
+        "production_cost": 2000,
+        "profit_margin": 0.3,
+        "discount": 0.15
+    },
+    {
+        "name": "MacBook Air",
+        "image": "macbook_air.jpg",
+        "quantity": 20,
+        "location": "Warehouse B",
+        "production_cost": 1500,
+        "profit_margin": 0.25,
+        "discount": 0.1
+    },
+    {
+        "name": "iMac",
+        "image": "imac.jpg",
+        "quantity": 30,
+        "location": "Warehouse C",
+        "production_cost": 2500,
+        "profit_margin": 0.28,
+        "discount": 0.12
+    }
+]

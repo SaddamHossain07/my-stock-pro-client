@@ -1,17 +1,11 @@
 import { MdOndemandVideo } from "react-icons/md";
-import { useContext } from 'react';
-import { AuthContext } from '../../Authentication/AuthProvider/AuthProvider';
 import Logo from "../Logo";
 import { NavLink } from "react-router-dom";
+import UseAuth from "../../Hooks/UseAuth/UseAuth";
+import UserInfo from "../UserInfo/UserInfo";
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext)
-
-    const handleLogOut = () => {
-        logOut()
-            .then(() => { })
-            .catch(error => console.log(error))
-    }
+    const { user } = UseAuth()
 
     const navItems = <>
         <li>
@@ -20,16 +14,17 @@ const Navbar = () => {
             }>Home
             </NavLink>
         </li>
-        <li>
-            <NavLink to="/createStore" className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
-            }>Create-Store
-            </NavLink>
-        </li>
+
         {
             user ? <>
                 <li>
-                    <NavLink to="/dashboard" className={({ isActive, isPending }) =>
+                    <NavLink to="/createShop" className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                    }>Create-Shop
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to={`/dashboard/productManagement/${user.email}`} className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
                     }>Dashboard
                     </NavLink>
@@ -59,7 +54,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 fixed z-10 max-w-7xl mx-auto py-4">
+        <div className="navbar bg-base-100 fixed z-10 max-w-7xl mx-auto py-4 shadow-md">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -82,13 +77,7 @@ const Navbar = () => {
                     Watch Demo
                 </button>
                 {
-                    user && <>
-                        <div className="hidden md:flex items-center gap-4 ml-auto">
-                            <p className="font-semibold">{user?.displayName}</p>
-                            <img className="w-12 h-12 rounded-full z-10" src={user?.photoURL} alt="" />
-                            <button onClick={handleLogOut} className="h-12 bg-purple-500 hover:bg-purple-600 text-white font-bold pl-8 pr-6 rounded-r-full -ml-9 z-5">Sign Out</button>
-                        </div>
-                    </>
+                    user && <UserInfo></UserInfo>
                 }
             </div>
         </div>

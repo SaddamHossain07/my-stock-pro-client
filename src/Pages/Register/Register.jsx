@@ -35,7 +35,7 @@ const Register = () => {
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-                                    navigate('/')
+                                    navigate('/createShop')
                                 }
                             })
                     })
