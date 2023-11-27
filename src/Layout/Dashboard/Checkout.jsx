@@ -30,14 +30,15 @@ const Checkout = () => {
     };
 
     const handleGetPaid = async () => {
-        html2pdf().from(element).set(opt).save();
+        // html2pdf().from(element).set(opt).save();
         const totalPrice = carts.reduce((total, item) => total + item.sellingPrice, 0)
         const newSales = {
             shopManager: user.email,
             price: totalPrice,
             salesDate: new Date(),
             cartIds: carts.map(item => item._id),
-            cartProductIds: carts.map(item => item.productId)
+            cartProductIds: carts.map(item => item.productId),
+            productName: carts.map(item => item.name)
         }
         const res = await axiosPublic.post('/sales', newSales)
         console.log(res.data)

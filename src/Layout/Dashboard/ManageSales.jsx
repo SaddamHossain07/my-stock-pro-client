@@ -17,7 +17,7 @@ const ManageSales = () => {
             return res.data
         }
     })
-    console.log(products)
+    // console.log(products)
 
     return (
         <div>
