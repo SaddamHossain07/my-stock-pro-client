@@ -10,6 +10,8 @@ const imgUploadKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
 const imgUploadAPI = `https://api.imgbb.com/1/upload?key=${imgUploadKey}`
 
 const UpdateProduct = () => {
+    const item = useLoaderData()
+    console.log(item)
     const { _id, name, quantity, buyingPrice, profitMargin, discount, location, description, image } = useLoaderData()
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()

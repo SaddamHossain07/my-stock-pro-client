@@ -7,20 +7,29 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DashboardTitle from "../../components/DashboardTitle/DashboardTitle";
+import UseAuth from "../../Hooks/UseAuth/UseAuth";
 const imgUploadKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
 const imgUploadAPI = `https://api.imgbb.com/1/upload?key=${imgUploadKey}`
 
 const ProductManagement = () => {
-    const shop = useLoaderData()
     const [haveProduct, setHaveProduct] = useState(false)
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
+    const { user } = UseAuth()
+
+    const { data: shopUser = [] } = useQuery({
+        queryKey: ['shopUser'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/users/${user.email}`)
+            return res.data
+        }
+    })
 
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/products/owner/${shop._id}`)
+            const res = await axiosPublic.get(`/products/${user.email}`)
             return res.data
         }
     })
@@ -56,9 +65,9 @@ const ProductManagement = () => {
                 location: data.location,
                 description: data.description,
                 image: res.data.data.display_url,
-                shopId: shop._id,
-                shopName: shop.shopName,
-                ownerEmail: shop.ownerEmail,
+                shopId: shopUser.shopId,
+                shopName: shopUser.shopName,
+                ownerEmail: shopUser.email,
                 sellingPrice: buyingPrice + tax + profit,
                 productAddedDate: new Date(),
                 saleCount: 0
@@ -77,7 +86,7 @@ const ProductManagement = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                // reset()
+                reset()
             }
         }
     }

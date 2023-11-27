@@ -2,12 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 import DashboardTitle from "../../components/DashboardTitle/DashboardTitle";
+import SalesCard from "../../components/SalesCard/SalesCard";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const ManageSales = () => {
     const axiosPublic = useAxiosPublic()
     const { user } = UseAuth()
-    console.log(user.email)
+    console.log(user?.email)
     const { data: products = [] } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -35,6 +37,9 @@ const ManageSales = () => {
                         {/* <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-purple-500 hover:bg-purple-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> */}
                     </div>
                 </form>
+                <Link to='/dashboard/checkout'>
+                    <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white  p-4 rounded-none"><MdOutlineShoppingCartCheckout />Proceed to Check-out</button>
+                </Link>
             </div>
             <div className="overflow-x-auto overflow-y-auto mt-3">
                 <table className="table rounded-none bg-white">
@@ -52,32 +57,11 @@ const ManageSales = () => {
                     </thead>
                     <tbody>
                         {
-                            products.map((item, index) => <tr key={item._id}>
-                                <td>
-                                    {index + 1}
-                                </td>
-                                <td>
-                                    <div className="flex items-center gap-3">
-                                        <div className="avatar">
-                                            <div className="w-24 h-16">
-                                                <img src={item.image} alt="Avatar Tailwind CSS Component" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="font-semibold">{item.name}</div>
-                                </td>
-                                <td>{item.quantity}</td>
-                                <td>{item.discount}%</td>
-                                <td>${item.sellingPrice}</td>
-                                <td>
-                                    <button className="btn text-purple-600 font-bold flex items-center gap-2 bg-slate-100">
-                                        <MdOutlineShoppingCartCheckout />Check-Out
-                                    </button>
-
-                                </td>
-                            </tr>)
+                            products.map((item, index) => <SalesCard
+                                key={item._id}
+                                index={index}
+                                item={item}
+                            ></SalesCard>)
                         }
                     </tbody>
                 </table>

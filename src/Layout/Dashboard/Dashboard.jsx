@@ -3,7 +3,6 @@ import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import Logo from "../../components/Logo";
 import { FaCalendar, FaHome, FaList, FaPen, FaShoppingCart } from "react-icons/fa";
 import { MdFormatListBulletedAdd } from "react-icons/md";
-import logo from '../../assets/myStockLogo.png'
 import UserInfo from "../../components/UserInfo/UserInfo";
 
 const Dashboard = () => {
@@ -24,21 +23,21 @@ const Dashboard = () => {
                     <div className=" max-h-[calc(100vh-170px)] px-1 overflow-y-scroll">
                         <ul className="menu text-md font-semibold">
                             <li>
-                                <NavLink to={`/dashboard/productManagement/${user.email}`} className='hover:bg-slate-200 rounded-r-full'>
+                                <NavLink to={`/dashboard/productManagement/${user?.email}`} className='hover:bg-slate-200 rounded-r-full'>
                                     <FaHome className='mr-3'></FaHome>
                                     Product
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/manageSales'>
+                                <NavLink className='hover:bg-slate-200 rounded-r-full' to={`/dashboard/manageSales`}>
                                     <FaCalendar className='mr-3'></FaCalendar>
                                     Sales
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/cart'>
+                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/checkout'>
                                     <FaShoppingCart className='mr-3'></FaShoppingCart>
-                                    My Cart
+                                    Check-out
                                 </NavLink>
                             </li>
                             <li>

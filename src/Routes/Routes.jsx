@@ -11,6 +11,7 @@ import ProductManagement from "../Layout/Dashboard/ProductManagement";
 import Subscription from "../Layout/Dashboard/Subscription";
 import UpdateProduct from "../Layout/Dashboard/UpdateProduct";
 import ManageSales from "../Layout/Dashboard/ManageSales";
+import Checkout from "../Layout/Dashboard/Checkout";
 
 const Routes = createBrowserRouter([
     {
@@ -42,8 +43,7 @@ const Routes = createBrowserRouter([
         children: [
             {
                 path: 'productManagement/:email',
-                element: <PrivateRoute><ProductManagement></ProductManagement></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/shops/${params.email}`)
+                element: <PrivateRoute><ProductManagement></ProductManagement></PrivateRoute>
             },
             {
                 path: 'updateProduct/:id',
@@ -57,6 +57,10 @@ const Routes = createBrowserRouter([
             {
                 path: 'manageSales',
                 element: <ManageSales></ManageSales>,
+            },
+            {
+                path: 'checkout',
+                element: <Checkout></Checkout>
             }
         ]
     }

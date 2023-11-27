@@ -31,7 +31,8 @@ const CreateShop = () => {
                 ownerEmail: user.email,
                 shopLocation: data.shopLocation,
                 shopInfo: data.shopInfo,
-                shopLogo: res.data.data.display_url
+                shopLogo: res.data.data.display_url,
+                limit: 3
             }
             const shopResponse = await axiosPublic.post('/shops', newShop)
             console.log(shopResponse.data)
