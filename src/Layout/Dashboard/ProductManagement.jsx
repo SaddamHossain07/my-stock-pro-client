@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import DashboardTitle from "../../components/DashboardTitle/DashboardTitle";
 const imgUploadKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
 const imgUploadAPI = `https://api.imgbb.com/1/upload?key=${imgUploadKey}`
 
@@ -113,11 +114,12 @@ const ProductManagement = () => {
         < div >
             {
                 haveProduct ? <>
-                    <div className="w-full bg-white p-3 flex justify-between items-center">
+                    <DashboardTitle role={'Manager'} subPage={'Product Management'}></DashboardTitle>
+                    <div className="w-full bg-white p-3 mt-3 flex justify-between items-center">
                         <h3 className="text-2xl font-bold">Total Product : {products.length}</h3>
                         <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white  p-4 rounded-none" onClick={() => document.getElementById('my_modal_3').showModal()}><FaPen></FaPen>Add Product</button>
                     </div>
-                    <div className="overflow-x-auto mt-4">
+                    <div className="overflow-x-auto overflow-y-auto mt-4">
                         <table className="table bg-white">
                             {/* head */}
                             <thead className="bg-slate-50">

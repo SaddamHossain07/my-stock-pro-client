@@ -16,7 +16,7 @@ const Dashboard = () => {
                     <div className="h-14">
                         <Logo></Logo>
                     </div>
-                    <div className="pt-3 pb-4 border-b-gray-100 border-b">
+                    <div className="hidden lg:flex pt-3 pb-4 border-b-gray-100 border-b">
                         <div className="py-6 px-3 mr-16 flex justify-center items-center font-semibold border rounded-2xl shadow-md">
                             <FaPen className="mr-2"></FaPen> Add Product
                         </div>
@@ -26,13 +26,13 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to={`/dashboard/productManagement/${user.email}`} className='hover:bg-slate-200 rounded-r-full'>
                                     <FaHome className='mr-3'></FaHome>
-                                    Product Management
+                                    Product
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/userHome'>
+                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/manageSales'>
                                     <FaCalendar className='mr-3'></FaCalendar>
-                                    Reservation
+                                    Sales
                                 </NavLink>
                             </li>
                             <li>
@@ -91,7 +91,7 @@ const Dashboard = () => {
                 </div>
                 <div className="flex-1">
                     <div className="h-14 w-full flex items-center justify-between">
-                        <form className="w-1/3">
+                        <form className="w-1/2">
                             <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                             <div className="relative">
                                 <div className="absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none">
@@ -100,7 +100,7 @@ const Dashboard = () => {
                                     </svg>
                                 </div>
                                 <input type="search" id="default-search" className="block bg-slate-100 w-full py-4 px-6 ps-12 text-sm text-gray-900 border border-gray-300 rounded-full  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search product...." required />
-                                <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-purple-500 hover:bg-purple-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                                {/* <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-purple-500 hover:bg-purple-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> */}
                             </div>
                         </form>
                         <UserInfo></UserInfo>

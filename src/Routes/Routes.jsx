@@ -10,6 +10,7 @@ import CreateShop from "../Pages/CreateShop/CreateShop";
 import ProductManagement from "../Layout/Dashboard/ProductManagement";
 import Subscription from "../Layout/Dashboard/Subscription";
 import UpdateProduct from "../Layout/Dashboard/UpdateProduct";
+import ManageSales from "../Layout/Dashboard/ManageSales";
 
 const Routes = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const Routes = createBrowserRouter([
             {
                 path: 'subscription',
                 element: <Subscription></Subscription>
+            },
+            {
+                path: 'manageSales',
+                element: <ManageSales></ManageSales>,
             }
         ]
     }
