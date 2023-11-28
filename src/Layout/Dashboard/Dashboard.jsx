@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import Logo from "../../components/Logo";
 import { FaCalendar, FaHome, FaList, FaPen, FaShoppingCart } from "react-icons/fa";
-import { MdFormatListBulletedAdd } from "react-icons/md";
+import { MdFormatListBulletedAdd, MdSubscriptions } from "react-icons/md";
 import UserInfo from "../../components/UserInfo/UserInfo";
 
 const Dashboard = () => {
@@ -41,15 +41,15 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/review'>
-                                    <MdFormatListBulletedAdd className='mr-3' />
-                                    Add a review
+                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/subscription'>
+                                    <MdSubscriptions className='mr-3' />
+                                    Subscription
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/paymentHistory'>
+                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/salesSummary'>
                                     <FaList className='mr-3'></FaList>
-                                    Payment History
+                                    Summary
                                 </NavLink>
                             </li>
 

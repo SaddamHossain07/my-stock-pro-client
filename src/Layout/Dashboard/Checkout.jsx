@@ -30,10 +30,10 @@ const Checkout = () => {
     };
 
     const handleGetPaid = async () => {
-        // html2pdf().from(element).set(opt).save();
+        html2pdf().from(element).set(opt).save();
         const totalPrice = carts.reduce((total, item) => total + item.sellingPrice, 0)
         const newSales = {
-            shopManager: user.email,
+            shopManager: carts.map(item => item.name),
             price: totalPrice,
             salesDate: new Date(),
             cartIds: carts.map(item => item._id),

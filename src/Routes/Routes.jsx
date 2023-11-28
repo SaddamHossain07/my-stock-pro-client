@@ -12,6 +12,7 @@ import Subscription from "../Layout/Dashboard/Subscription";
 import UpdateProduct from "../Layout/Dashboard/UpdateProduct";
 import ManageSales from "../Layout/Dashboard/ManageSales";
 import Checkout from "../Layout/Dashboard/Checkout";
+import SalesSummary from "../Layout/Dashboard/SalesSummary";
 
 const Routes = createBrowserRouter([
     {
@@ -51,16 +52,20 @@ const Routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             },
             {
-                path: 'subscription',
-                element: <Subscription></Subscription>
-            },
-            {
                 path: 'manageSales',
                 element: <ManageSales></ManageSales>,
             },
             {
                 path: 'checkout',
                 element: <Checkout></Checkout>
+            },
+            {
+                path: 'subscription',
+                element: <Subscription></Subscription>
+            },
+            {
+                path: 'salesSummary',
+                element: <SalesSummary></SalesSummary>
             }
         ]
     }

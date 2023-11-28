@@ -1,17 +1,24 @@
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 import Swal from "sweetalert2";
 import { FaCartPlus } from "react-icons/fa";
+import UseAuth from "../../Hooks/UseAuth/UseAuth";
 
 
 const SalesCard = ({ item, index }) => {
+    const { user } = UseAuth()
     // console.log('item ready for checkout', item)
-    const { _id, name, image, sellingPrice, ownerEmail, profitMargin } = item
+    const { _id, name, image, sellingPrice, profitMargin } = item
 
     const axiosPublic = useAxiosPublic()
 
     const handleAddForCheckOut = item => {
         const AddedItem = {
-            productId: _id, name, image, sellingPrice, ownerEmail, profitMargin
+            productId: _id,
+            shopManager: user.email,
+            name,
+            image,
+            sellingPrice,
+            profitMargin
         }
 
         axiosPublic.post('/carts', AddedItem)

@@ -67,7 +67,7 @@ const ProductManagement = () => {
                 image: res.data.data.display_url,
                 shopId: shopUser.shopId,
                 shopName: shopUser.shopName,
-                ownerEmail: shopUser.email,
+                shopManager: shopUser.email,
                 sellingPrice: buyingPrice + tax + profit,
                 productAddedDate: new Date(),
                 saleCount: 0
@@ -125,7 +125,7 @@ const ProductManagement = () => {
                 haveProduct ? <>
                     <DashboardTitle role={'Manager'} subPage={'Product Management'}></DashboardTitle>
                     <div className="w-full bg-white p-3 mt-3 flex justify-between items-center">
-                        <h3 className="text-2xl font-bold">Total Product : {products.length}</h3>
+                        <h3 className="text-xl font-bold">Total Product : {products.length}</h3>
                         <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white  p-4 rounded-none" onClick={() => document.getElementById('my_modal_3').showModal()}><FaPen></FaPen>Add Product</button>
                     </div>
                     <div className="overflow-x-auto overflow-y-auto mt-4">

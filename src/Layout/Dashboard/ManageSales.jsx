@@ -41,7 +41,7 @@ const ManageSales = () => {
                     <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white  p-4 rounded-none"><MdOutlineShoppingCartCheckout />Proceed to Check-out</button>
                 </Link>
             </div>
-            <div className="overflow-x-auto overflow-y-auto mt-3">
+            <div className="overflow-x-auto overflow-y-auto mt-4">
                 <table className="table rounded-none bg-white">
                     {/* head */}
                     <thead className="bg-slate-50">
