@@ -90,7 +90,7 @@ const Checkout = () => {
                 <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white  p-4 rounded-none" onClick={handleGetPaid}><RiSecurePaymentFill />Get Paid</button>
             </div>
             <div className="overflow-x-auto overflow-y-auto mt-4">
-                <table className="table bg-white">
+                <table className="table bg-white rounded-none">
                     {/* head */}
                     <thead className="bg-slate-50">
                         <tr>
@@ -104,7 +104,7 @@ const Checkout = () => {
                     </thead>
                     <tbody>
                         {
-                            carts.map((item, index) => <tr key={item._id}>
+                            carts?.map((item, index) => <tr key={item._id}>
                                 <td>
                                     {index + 1}
                                 </td>

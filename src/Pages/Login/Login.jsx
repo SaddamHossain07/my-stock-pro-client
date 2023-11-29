@@ -52,7 +52,7 @@ const Login = () => {
             <div className="hero min-h-screen pt-24">
                 <div className="hero-content flex flex-col gap-6 md:gap-0 md:flex-row">
                     <div className="w-[400px] lg:w-[500px] h-[528px] shadow-2xl rounded-lg md:rounded-l-lg md:rounded-r-none overflow-hidden">
-                        <img className="w-full h-full object-cover" src="https://i.ibb.co/syn2CGp/daryl-han-D4-Ici-Od-MDf-Y-unsplash-1.jpg" alt="" />
+                        <img className="w-full h-full object-cover" src="https://i.ibb.co/09hLXbH/Screenshot-2023-11-29-091819.png" alt="" />
                     </div>
                     <div className="rounded-lg md:rounded-r-lg md:rounded-l-none w-full max-w-sm shadow-2xl bg-gradient-to-r from-slate-200 to-[#e3b99c] p-8">
 

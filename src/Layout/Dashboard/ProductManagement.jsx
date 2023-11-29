@@ -131,7 +131,7 @@ const ProductManagement = () => {
                         <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white  p-4 rounded-none" onClick={() => document.getElementById('my_modal_3').showModal()}><FaPen></FaPen>Add Product</button>
                     </div>
                     <div className="overflow-x-auto overflow-y-auto mt-4">
-                        <table className="table bg-white">
+                        <table className="table bg-white rounded-none">
                             {/* head */}
                             <thead className="bg-slate-50">
                                 <tr>
@@ -146,7 +146,7 @@ const ProductManagement = () => {
                             </thead>
                             <tbody>
                                 {
-                                    products.map((item, index) => <tr key={item._id}>
+                                    products?.map((item, index) => <tr key={item._id}>
                                         <td>
                                             {index + 1}
                                         </td>

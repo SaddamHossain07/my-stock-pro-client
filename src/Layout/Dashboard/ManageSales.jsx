@@ -57,7 +57,7 @@ const ManageSales = () => {
                     </thead>
                     <tbody>
                         {
-                            products.map((item, index) => <SalesCard
+                            products?.map((item, index) => <SalesCard
                                 key={item._id}
                                 index={index}
                                 item={item}

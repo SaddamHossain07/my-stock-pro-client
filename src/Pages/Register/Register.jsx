@@ -56,7 +56,7 @@ const Register = () => {
             <div className="hero min-h-screen pt-24">
                 <div className="hero-content flex flex-col gap-6 md:gap-0 md:flex-row">
                     <div className="w-[400px] lg:w-[500px] h-[696px] shadow-2xl rounded-lg md:rounded-l-lg md:rounded-r-none overflow-hidden">
-                        <img className="w-full h-full object-cover" src="https://i.ibb.co/N217Tsm/daryl-han-BRx-JXTUlh7-M-unsplash.jpg" alt="" />
+                        <img className="w-full h-full object-cover" src="https://i.ibb.co/p3rkrM0/Screenshot-2023-11-29-091059.png" alt="" />
                     </div>
                     <div className="rounded-lg md:rounded-r-lg md:rounded-l-none w-full max-w-sm shadow-2xl bg-gradient-to-r from-slate-200 to-[#e3b99c] p-8">
 
