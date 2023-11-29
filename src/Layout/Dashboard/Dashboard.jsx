@@ -18,11 +18,13 @@ const Dashboard = () => {
                     <div className="h-14">
                         <Logo></Logo>
                     </div>
-                    <div className="hidden lg:flex pt-3 pb-4 border-b-gray-100 border-b">
-                        <div className="py-6 px-3 mr-16 flex justify-center items-center font-semibold border rounded-2xl shadow-md">
-                            <FaPen className="mr-2"></FaPen> Add Product
+                    {
+                        !isAdmin && <div className="hidden lg:flex pt-3 pb-4 border-b-gray-100 border-b">
+                            <div className="py-6 px-3 mr-16 flex justify-center items-center font-semibold border rounded-2xl shadow-md">
+                                <FaPen className="mr-2"></FaPen> Add Product
+                            </div>
                         </div>
-                    </div>
+                    }
                     <div className=" max-h-[calc(100vh-170px)] px-1 overflow-y-scroll">
                         <ul className="menu text-md font-semibold">
                             {

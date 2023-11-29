@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
 import { FaEdit } from "react-icons/fa";
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import DashboardTitle from "../../components/DashboardTitle/DashboardTitle";
 import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 const imgUploadKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
 const imgUploadAPI = `https://api.imgbb.com/1/upload?key=${imgUploadKey}`
@@ -70,6 +71,9 @@ const UpdateProduct = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>myStock Pro | Update Product</title>
+            </Helmet>
             <DashboardTitle role={'Manager'} subPage={'Update Product'}></DashboardTitle>
             <div className="w-3/4 mx-auto bg-white p-6 mt-3">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-1">

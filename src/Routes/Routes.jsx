@@ -15,6 +15,7 @@ import Checkout from "../Layout/Dashboard/Checkout";
 import SalesSummary from "../Layout/Dashboard/SalesSummary";
 import AllUsers from "../Layout/Dashboard/Admin/AllUsers";
 import AdminRoute from "./AdminRoute";
+import Payment from "../Layout/Dashboard/Payment/Payment";
 
 const Routes = createBrowserRouter([
     {
@@ -50,11 +51,11 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'updateProduct/:id',
-                element: <UpdateProduct></UpdateProduct>,
+                element: <UpdateProduct></UpdateProduct>
             },
             {
                 path: 'manageSales',
-                element: <ManageSales></ManageSales>,
+                element: <ManageSales></ManageSales>
             },
             {
                 path: 'checkout',
@@ -68,6 +69,11 @@ const Routes = createBrowserRouter([
                 path: 'salesSummary',
                 element: <SalesSummary></SalesSummary>
             },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
+            },
+            // admin route =============
             {
                 path: 'users',
                 element: <AdminRoute><AllUsers></AllUsers></AdminRoute>

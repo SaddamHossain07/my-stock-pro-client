@@ -10,7 +10,7 @@ const useManager = () => {
     const [hasShop, setHasShop] = useState(false)
     const [role, setRole] = useState('anonymous')
 
-    const { data, isPending: isAdminLoading } = useQuery({
+    const { data, isPending: isManagerLoading } = useQuery({
         queryKey: ['loggedInUser'],
         enabled: !loading,
         queryFn: async () => {
@@ -24,7 +24,7 @@ const useManager = () => {
             setRole(res.data?.role)
         }
     })
-    return { isManager, hasShop, role, data, isAdminLoading }
+    return { isManager, hasShop, role, data, isManagerLoading }
 
 };
 

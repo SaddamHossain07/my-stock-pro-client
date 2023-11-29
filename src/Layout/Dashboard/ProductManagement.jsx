@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import DashboardTitle from "../../components/DashboardTitle/DashboardTitle";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
+import { Helmet } from "react-helmet";
 const imgUploadKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
 const imgUploadAPI = `https://api.imgbb.com/1/upload?key=${imgUploadKey}`
 
@@ -121,181 +122,186 @@ const ProductManagement = () => {
     }
 
     return (
-
-        < div >
-            {
-                haveProduct ? <>
-                    <DashboardTitle role={'Manager'} subPage={'Product Management'}></DashboardTitle>
-                    <div className="w-full bg-white p-3 mt-3 flex justify-between items-center">
-                        <h3 className="text-xl font-bold">Total Product : {products.length}</h3>
-                        <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white  p-4 rounded-none" onClick={() => document.getElementById('my_modal_3').showModal()}><FaPen></FaPen>Add Product</button>
-                    </div>
-                    <div className="overflow-x-auto overflow-y-auto mt-4">
-                        <table className="table bg-white rounded-none">
-                            {/* head */}
-                            <thead className="bg-slate-50">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Quantity</th>
-                                    <th>Sale</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    products?.map((item, index) => <tr key={item._id}>
-                                        <td>
-                                            {index + 1}
-                                        </td>
-                                        <td>
-                                            <div className="flex items-center gap-3">
-                                                <div className="avatar">
-                                                    <div className="w-24 h-16">
-                                                        <img src={item.image} alt="Avatar Tailwind CSS Component" />
+        <>
+            <Helmet>
+                <title>myStock Pro | Product Management</title>
+            </Helmet>
+            < div >
+                {
+                    haveProduct ? <>
+                        <DashboardTitle role={'Manager'} subPage={'Product Management'}></DashboardTitle>
+                        <div className="w-full bg-white p-3 mt-3 flex justify-between items-center">
+                            <h3 className="text-xl font-bold">Total Product : {products.length}</h3>
+                            <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white  p-4 rounded-none" onClick={() => document.getElementById('my_modal_3').showModal()}><FaPen></FaPen>Add Product</button>
+                        </div>
+                        <div className="overflow-x-auto overflow-y-auto mt-4">
+                            <table className="table bg-white rounded-none">
+                                {/* head */}
+                                <thead className="bg-slate-50">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Quantity</th>
+                                        <th>Sale</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        products?.map((item, index) => <tr key={item._id}>
+                                            <td>
+                                                {index + 1}
+                                            </td>
+                                            <td>
+                                                <div className="flex items-center gap-3">
+                                                    <div className="avatar">
+                                                        <div className="w-24 h-16">
+                                                            <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div className="font-semibold">{item.name}</div>
-                                        </td>
-                                        <td>{item.quantity}</td>
-                                        <td>{item.saleCount}</td>
-                                        <td>
-                                            <Link to={`/dashboard/updateProduct/${item._id}`} >
-                                                <button className="btn-sm text-red-500 font-bold">
-                                                    <FaEdit></FaEdit>
+                                            </td>
+                                            <td>
+                                                <div className="font-semibold">{item.name}</div>
+                                            </td>
+                                            <td>{item.quantity}</td>
+                                            <td>{item.saleCount}</td>
+                                            <td>
+                                                <Link to={`/dashboard/updateProduct/${item._id}`} >
+                                                    <button className="btn-sm text-red-500 font-bold">
+                                                        <FaEdit></FaEdit>
+                                                    </button>
+                                                </Link>
+                                            </td>
+                                            <td>
+                                                <button onClick={() => handleDelete(item)} className="btn-sm text-red-500 font-bold">
+                                                    <FaTrash></FaTrash>
                                                 </button>
-                                            </Link>
-                                        </td>
-                                        <td>
-                                            <button onClick={() => handleDelete(item)} className="btn-sm text-red-500 font-bold">
-                                                <FaTrash></FaTrash>
-                                            </button>
 
-                                        </td>
-                                    </tr>)
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </>
-                    : <>
-                        <div className="mt-24 flex items-center justify-center">
-                            <div className="bg-white w-1/2 border border-gray-200 flex flex-col items-center justify-center px-4 py-8 rounded-lg shadow-2xl">
-                                <p className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider heading">New Here?</p>
-                                <p className="text-md md:text-lg lg:text-xl font-bold tracking-wider text-gray-500 mt-4 text-center">You have not added any product yet!</p>
-                                <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white mt-6 p-4 rounded-none" onClick={() => document.getElementById('my_modal_3').showModal()}><FaPen></FaPen>Add Product</button>
-                            </div>
+                                            </td>
+                                        </tr>)
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </>
-            }
+                        : <>
+                            <div className="mt-24 flex items-center justify-center">
+                                <div className="bg-white w-1/2 border border-gray-200 flex flex-col items-center justify-center px-4 py-8 rounded-lg shadow-2xl">
+                                    <p className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider heading">New Here?</p>
+                                    <p className="text-md md:text-lg lg:text-xl font-bold tracking-wider text-gray-500 mt-4 text-center">You have not added any product yet!</p>
+                                    <button className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white mt-6 p-4 rounded-none" onClick={() => document.getElementById('my_modal_3').showModal()}><FaPen></FaPen>Add Product</button>
+                                </div>
+                            </div>
+                        </>
+                }
 
-            {/* add product form  */}
-            <dialog id="my_modal_3" className="modal">
-                <div className="modal-box">
-                    <form method="dialog">
-                        {/* if there is a button in form, it will close the modal */}
-                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    </form>
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-1">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="block text-sm font-medium leading-6 text-gray-900">Product Name</span>
-                            </label>
-                            <input
-                                type="text"
-                                {...register("name")}
-                                placeholder="Product Name"
-                                className="input input-sm input-bordered" required />
-                        </div>
-                        <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
-                            <div className="form-control w-full">
+                {/* add product form  */}
+                <dialog id="my_modal_3" className="modal">
+                    <div className="modal-box">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-1">
+                            <div className="form-control">
                                 <label className="label">
-                                    <span className="block text-sm font-medium leading-6 text-gray-900">Quantity</span>
+                                    <span className="block text-sm font-medium leading-6 text-gray-900">Product Name</span>
                                 </label>
                                 <input
-                                    type="number"
-                                    {...register("quantity")}
-                                    placeholder="Quantity"
+                                    type="text"
+                                    {...register("name")}
+                                    placeholder="Product Name"
                                     className="input input-sm input-bordered" required />
                             </div>
-                            <div className="form-control w-full">
-                                <label className="label">
-                                    <span className="block text-sm font-medium leading-6 text-gray-900">Buying Price ($)</span>
-                                </label>
-                                <input
-                                    {...register("buyingPrice")}
-                                    type="number"
-                                    placeholder="buying Price ($)"
-                                    className="input input-sm input-bordered w-full" />
+                            <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
+                                <div className="form-control w-full">
+                                    <label className="label">
+                                        <span className="block text-sm font-medium leading-6 text-gray-900">Quantity</span>
+                                    </label>
+                                    <input
+                                        type="number"
+                                        {...register("quantity")}
+                                        placeholder="Quantity"
+                                        className="input input-sm input-bordered" required />
+                                </div>
+                                <div className="form-control w-full">
+                                    <label className="label">
+                                        <span className="block text-sm font-medium leading-6 text-gray-900">Buying Price ($)</span>
+                                    </label>
+                                    <input
+                                        {...register("buyingPrice")}
+                                        type="number"
+                                        placeholder="buying Price ($)"
+                                        className="input input-sm input-bordered w-full" />
+                                </div>
                             </div>
-                        </div>
-                        <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
-                            <div className="form-control w-full">
+                            <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
+                                <div className="form-control w-full">
+                                    <label className="label">
+                                        <span className="block text-sm font-medium leading-6 text-gray-900">Profit Margin (%)</span>
+                                    </label>
+                                    <input
+                                        type="number"
+                                        {...register("profitMargin")}
+                                        placeholder="Profit Margin (%)"
+                                        className="input input-sm input-bordered" required />
+                                </div>
+                                <div className="form-control w-full">
+                                    <label className="label">
+                                        <span className="block text-sm font-medium leading-6 text-gray-900">discount (%)</span>
+                                    </label>
+                                    <input
+                                        {...register("discount")}
+                                        type="number"
+                                        placeholder="discount (%)"
+                                        className="input input-sm input-bordered w-full" />
+                                </div>
+                            </div>
+
+                            <div className="form-control">
                                 <label className="label">
-                                    <span className="block text-sm font-medium leading-6 text-gray-900">Profit Margin (%)</span>
+                                    <span className="block text-sm font-medium leading-6 text-gray-900">Location</span>
                                 </label>
                                 <input
-                                    type="number"
-                                    {...register("profitMargin")}
-                                    placeholder="Profit Margin (%)"
+                                    type="text"
+                                    {...register("location")}
+                                    placeholder="Location"
                                     className="input input-sm input-bordered" required />
                             </div>
-                            <div className="form-control w-full">
-                                <label className="label">
-                                    <span className="block text-sm font-medium leading-6 text-gray-900">discount (%)</span>
-                                </label>
+                            <div className="col-span-full form-control">
+                                <label className="block text-sm font-medium leading-6 text-gray-900">Description</label>
+                                <div className="mt-2">
+                                    <textarea
+                                        {...register("description")}
+                                        placeholder="Description"
+                                        rows="3"
+                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-200 sm:text-sm sm:leading-6 p-4 mb-2" />
+                                </div>
+                            </div>
+
+                            <div className="form-control">
                                 <input
-                                    {...register("discount")}
-                                    type="number"
-                                    placeholder="discount (%)"
-                                    className="input input-sm input-bordered w-full" />
+                                    {...register("image")}
+                                    type="file"
+                                    className="file-input bg-slate-100 file-input-bordered max-w-xs" />
                             </div>
-                        </div>
 
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="block text-sm font-medium leading-6 text-gray-900">Location</span>
-                            </label>
-                            <input
-                                type="text"
-                                {...register("location")}
-                                placeholder="Location"
-                                className="input input-sm input-bordered" required />
-                        </div>
-                        <div className="col-span-full form-control">
-                            <label className="block text-sm font-medium leading-6 text-gray-900">Description</label>
-                            <div className="mt-2">
-                                <textarea
-                                    {...register("description")}
-                                    placeholder="Description"
-                                    rows="3"
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-200 sm:text-sm sm:leading-6 p-4 mb-2" />
+                            <div className="form-control">
+                                <button
+                                    type="submit"
+                                    className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white  p-2 rounded-none mt-4">
+                                    <FaPen />Add Product
+                                </button>
                             </div>
-                        </div>
+                        </form>
+                    </div>
+                </dialog>
+            </div >
+        </>
 
-                        <div className="form-control">
-                            <input
-                                {...register("image")}
-                                type="file"
-                                className="file-input bg-slate-100 file-input-bordered max-w-xs" />
-                        </div>
-
-                        <div className="form-control">
-                            <button
-                                type="submit"
-                                className="btn bg-gradient-to-r from-purple-500 to-pink-500 text-white  p-2 rounded-none mt-4">
-                                <FaPen />Add Product
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </dialog>
-        </div >
     );
 };
 
