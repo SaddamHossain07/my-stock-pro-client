@@ -4,7 +4,10 @@ import Showcase from "./Showcase/Showcase";
 import TopFeature from "./TopFeature/TopFeature";
 
 import logoImg from '../../assets/myStockLogo.png'
+
 const Home = () => {
+
+
     return (
         <div>
             <Helmet>

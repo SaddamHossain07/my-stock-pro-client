@@ -40,7 +40,12 @@ const Login = () => {
 
             })
             .catch(error => {
-                console.log(error)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Invalid credential!",
+                    footer: '<a href="#">Please check your email and password.</a>'
+                });
             })
     }
 

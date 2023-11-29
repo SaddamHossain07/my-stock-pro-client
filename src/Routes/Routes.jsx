@@ -14,6 +14,7 @@ import ManageSales from "../Layout/Dashboard/ManageSales";
 import Checkout from "../Layout/Dashboard/Checkout";
 import SalesSummary from "../Layout/Dashboard/SalesSummary";
 import AllUsers from "../Layout/Dashboard/Admin/AllUsers";
+import AdminRoute from "./AdminRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -69,7 +70,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'users',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             }
         ]
     }

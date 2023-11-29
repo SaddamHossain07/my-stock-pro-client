@@ -4,10 +4,12 @@ import { NavLink } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import UserInfo from "../UserInfo/UserInfo";
 import useAdmin from "../../Hooks/useAdmin/useAdmin";
+import useManager from "../../Hooks/useManager/useManager";
 
 const Navbar = () => {
     const { user } = UseAuth()
     const [isAdmin] = useAdmin()
+    const { isManager, hasShop, role } = useManager()
     const navItems = <>
         <li>
             <NavLink to="/" className={({ isActive, isPending }) =>
@@ -15,43 +17,53 @@ const Navbar = () => {
             }>Home
             </NavLink>
         </li>
-
         {
             user ? <>
-                <li>
-                    <NavLink to="/createShop" className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
-                    }>Create-Shop
-                    </NavLink>
-                </li>
                 {
-                    isAdmin ? <li>
+                    !isManager && !isAdmin && <li>
+                        <NavLink to="/createShop" className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                        }>Create-Shop
+                        </NavLink>
+                    </li>
+                }
+                {
+                    isAdmin && <li>
                         <NavLink to={`/dashboard/users`} className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
                         }>Dashboard
                         </NavLink>
                     </li>
-                        : <li>
-                            <NavLink to={`/dashboard/productManagement/${user.email}`} className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
-                            }>Dashboard
-                            </NavLink>
-                        </li>
                 }
-            </> : <>
-                <li>
-                    <NavLink to="/login" className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
-                    }>Login
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/register" className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
-                    }>Register
-                    </NavLink>
-                </li>
-            </>
+                {
+                    !isAdmin && <li>
+                        <NavLink to={`/dashboard/productManagement/${user.email}`} className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                        }>Dashboard
+                        </NavLink>
+                    </li>
+                }
+            </> :
+                <>
+                    <li>
+                        <NavLink to="/createShop" className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                        }>Create-Shop
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/login" className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                        }>Login
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/register" className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                        }>Register
+                        </NavLink>
+                    </li>
+                </>
         }
 
     </>

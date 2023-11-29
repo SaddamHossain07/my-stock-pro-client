@@ -1,8 +1,10 @@
-# React + Vite
+# myStock Pro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Link : 
+- https://mystockpro-d8f17.web.app
 
-Currently, two official plugins are available:
+## Client side code link :
+- https://github.com/programming-hero-web-course1/b8a12-client-side-SaddamHossain07
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Server side code link :
+- https://github.com/programming-hero-web-course1/b8a12-server-side-SaddamHossain07
