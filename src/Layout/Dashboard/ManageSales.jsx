@@ -1,19 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
-import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 import DashboardTitle from "../../components/DashboardTitle/DashboardTitle";
 import SalesCard from "../../components/SalesCard/SalesCard";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 
 const ManageSales = () => {
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { user } = UseAuth()
     console.log(user?.email)
     const { data: products = [] } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/products/${user.email}`)
+            const res = await axiosSecure.get(`/products/${user.email}`)
             return res.data
         }
     })

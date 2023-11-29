@@ -34,7 +34,7 @@ const CreateShop = () => {
                 shopLogo: res.data.data.display_url,
                 limit: 3
             }
-            const shopResponse = await axiosPublic.post('/shops', newShop)
+            const shopResponse = await axiosSecure.post('/shops', newShop)
             console.log(shopResponse.data)
             if (shopResponse.data.insertedId) {
                 Swal.fire({

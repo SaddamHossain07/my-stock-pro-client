@@ -1,20 +1,20 @@
 import { FaTrash } from "react-icons/fa";
-import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import { useQuery } from "@tanstack/react-query";
 import DashboardTitle from "../../components/DashboardTitle/DashboardTitle";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import html2pdf from 'html2pdf.js'
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 
 
 const Checkout = () => {
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { user } = UseAuth()
     const { data: carts = [], refetch } = useQuery({
         queryKey: ['carts'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/carts/${user.email}`)
+            const res = await axiosSecure.get(`/carts/${user.email}`)
             return res.data
         }
     })
@@ -40,7 +40,7 @@ const Checkout = () => {
             cartProductIds: carts.map(item => item.productId),
             productName: carts.map(item => item.name)
         }
-        const res = await axiosPublic.post('/sales', newSales)
+        const res = await axiosSecure.post('/sales', newSales)
         console.log(res.data)
         if (res.data.salesResult.insertedId) {
             Swal.fire({
@@ -65,7 +65,7 @@ const Checkout = () => {
             confirmButtonText: "Yes, remove it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPublic.delete(`/carts/${id}`)
+                axiosSecure.delete(`/carts/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({

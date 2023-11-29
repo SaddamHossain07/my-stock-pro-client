@@ -2,6 +2,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 import Swal from "sweetalert2";
 import { FaCartPlus } from "react-icons/fa";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 
 
 const SalesCard = ({ item, index }) => {
@@ -10,6 +11,7 @@ const SalesCard = ({ item, index }) => {
     const { _id, name, image, sellingPrice, profitMargin } = item
 
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
 
     const handleAddForCheckOut = item => {
         const AddedItem = {
@@ -21,7 +23,7 @@ const SalesCard = ({ item, index }) => {
             profitMargin
         }
 
-        axiosPublic.post('/carts', AddedItem)
+        axiosSecure.post('/carts', AddedItem)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

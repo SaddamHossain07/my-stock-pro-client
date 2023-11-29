@@ -2,11 +2,13 @@ import { NavLink, Outlet } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import Logo from "../../components/Logo";
 import { FaCalendar, FaHome, FaList, FaPen, FaShoppingCart } from "react-icons/fa";
-import { MdFormatListBulletedAdd, MdSubscriptions } from "react-icons/md";
+import { MdSubscriptions } from "react-icons/md";
 import UserInfo from "../../components/UserInfo/UserInfo";
+import useAdmin from "../../Hooks/useAdmin/useAdmin";
 
 const Dashboard = () => {
     const { user } = UseAuth()
+    const [isAdmin] = useAdmin()
 
     return (
         <div className="max-w-7xl mx-auto">
@@ -22,69 +24,60 @@ const Dashboard = () => {
                     </div>
                     <div className=" max-h-[calc(100vh-170px)] px-1 overflow-y-scroll">
                         <ul className="menu text-md font-semibold">
-                            <li>
-                                <NavLink to={`/dashboard/productManagement/${user?.email}`} className='hover:bg-slate-200 rounded-r-full'>
-                                    <FaHome className='mr-3'></FaHome>
-                                    Product
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to={`/dashboard/manageSales`}>
-                                    <FaCalendar className='mr-3'></FaCalendar>
-                                    Sales
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/checkout'>
-                                    <FaShoppingCart className='mr-3'></FaShoppingCart>
-                                    Check-out
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/subscription'>
-                                    <MdSubscriptions className='mr-3' />
-                                    Subscription
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/salesSummary'>
-                                    <FaList className='mr-3'></FaList>
-                                    Summary
-                                </NavLink>
-                            </li>
+                            {
+                                isAdmin ? <>
+                                    <li>
+                                        <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/users'>
+                                            <FaHome className='mr-3'></FaHome>
+                                            All Users
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/userHome'>
+                                            <FaHome className='mr-3'></FaHome>
+                                            User Home
+                                        </NavLink>
+                                    </li>
+                                </>
+                                    : <>
+                                        <li>
+                                            <NavLink to={`/dashboard/productManagement/${user?.email}`} className='hover:bg-slate-200 rounded-r-full'>
+                                                <FaHome className='mr-3'></FaHome>
+                                                Product
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink className='hover:bg-slate-200 rounded-r-full' to={`/dashboard/manageSales`}>
+                                                <FaCalendar className='mr-3'></FaCalendar>
+                                                Sales
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/checkout'>
+                                                <FaShoppingCart className='mr-3'></FaShoppingCart>
+                                                Check-out
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/subscription'>
+                                                <MdSubscriptions className='mr-3' />
+                                                Subscription
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/salesSummary'>
+                                                <FaList className='mr-3'></FaList>
+                                                Summary
+                                            </NavLink>
+                                        </li>
+                                    </>
+                            }
+
 
                             <div className="divider"></div>
 
-                            <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/userHome'>
-                                    <FaHome className='mr-3'></FaHome>
-                                    User Home
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/userHome'>
-                                    <FaCalendar className='mr-3'></FaCalendar>
-                                    Reservation
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/cart'>
-                                    <FaShoppingCart className='mr-3'></FaShoppingCart>
-                                    My Cart
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/review'>
-                                    <MdFormatListBulletedAdd className='mr-3' />
-                                    Add a review
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/paymentHistory'>
-                                    <FaList className='mr-3'></FaList>
-                                    Payment History
-                                </NavLink>
-                            </li>
+
+
                         </ul>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { FaEdit, FaPen, FaTrash } from "react-icons/fa";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
@@ -8,20 +8,22 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DashboardTitle from "../../components/DashboardTitle/DashboardTitle";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 const imgUploadKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
 const imgUploadAPI = `https://api.imgbb.com/1/upload?key=${imgUploadKey}`
 
 const ProductManagement = () => {
+    const { user } = UseAuth()
     const [haveProduct, setHaveProduct] = useState(false)
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
-    const { user } = UseAuth()
 
     const { data: shopUser = [] } = useQuery({
         queryKey: ['shopUser'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/users/${user.email}`)
+            const res = await axiosSecure.get(`/users/${user?.email}`)
             return res.data
         }
     })
@@ -29,7 +31,7 @@ const ProductManagement = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/products/${user.email}`)
+            const res = await axiosSecure.get(`/products/${user?.email}`)
             return res.data
         }
     })
@@ -72,7 +74,7 @@ const ProductManagement = () => {
                 productAddedDate: new Date(),
                 saleCount: 0
             }
-            const productResponse = await axiosPublic.post('/products', newProduct)
+            const productResponse = await axiosSecure.post('/products', newProduct)
             if (productResponse.data.message) {
                 toast("Opps...!!! The product limit already exit!");
                 navigate('/dashboard/subscription')
@@ -102,7 +104,7 @@ const ProductManagement = () => {
             confirmButtonText: "Yes, delete!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPublic.delete(`/products/${item._id}`)
+                axiosSecure.delete(`/products/${item._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
@@ -137,7 +139,7 @@ const ProductManagement = () => {
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Quantity</th>
-                                    <th>Sales</th>
+                                    <th>Sale</th>
                                     <th>Update</th>
                                     <th>Delete</th>
                                 </tr>
@@ -161,7 +163,7 @@ const ProductManagement = () => {
                                             <div className="font-semibold">{item.name}</div>
                                         </td>
                                         <td>{item.quantity}</td>
-                                        <td>{item.quantity}</td>
+                                        <td>{item.saleCount}</td>
                                         <td>
                                             <Link to={`/dashboard/updateProduct/${item._id}`} >
                                                 <button className="btn-sm text-red-500 font-bold">

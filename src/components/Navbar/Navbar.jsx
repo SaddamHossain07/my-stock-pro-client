@@ -3,10 +3,11 @@ import Logo from "../Logo";
 import { NavLink } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import UserInfo from "../UserInfo/UserInfo";
+import useAdmin from "../../Hooks/useAdmin/useAdmin";
 
 const Navbar = () => {
     const { user } = UseAuth()
-
+    const [isAdmin] = useAdmin()
     const navItems = <>
         <li>
             <NavLink to="/" className={({ isActive, isPending }) =>
@@ -23,12 +24,20 @@ const Navbar = () => {
                     }>Create-Shop
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink to={`/dashboard/productManagement/${user.email}`} className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
-                    }>Dashboard
-                    </NavLink>
-                </li>
+                {
+                    isAdmin ? <li>
+                        <NavLink to={`/dashboard/users`} className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                        }>Dashboard
+                        </NavLink>
+                    </li>
+                        : <li>
+                            <NavLink to={`/dashboard/productManagement/${user.email}`} className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "underline text-purple-700 font-semibold" : ""
+                            }>Dashboard
+                            </NavLink>
+                        </li>
+                }
             </> : <>
                 <li>
                     <NavLink to="/login" className={({ isActive, isPending }) =>

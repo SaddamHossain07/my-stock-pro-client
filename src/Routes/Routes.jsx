@@ -13,6 +13,7 @@ import UpdateProduct from "../Layout/Dashboard/UpdateProduct";
 import ManageSales from "../Layout/Dashboard/ManageSales";
 import Checkout from "../Layout/Dashboard/Checkout";
 import SalesSummary from "../Layout/Dashboard/SalesSummary";
+import AllUsers from "../Layout/Dashboard/Admin/AllUsers";
 
 const Routes = createBrowserRouter([
     {
@@ -49,7 +50,6 @@ const Routes = createBrowserRouter([
             {
                 path: 'updateProduct/:id',
                 element: <UpdateProduct></UpdateProduct>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             },
             {
                 path: 'manageSales',
@@ -66,6 +66,10 @@ const Routes = createBrowserRouter([
             {
                 path: 'salesSummary',
                 element: <SalesSummary></SalesSummary>
+            },
+            {
+                path: 'users',
+                element: <AllUsers></AllUsers>
             }
         ]
     }

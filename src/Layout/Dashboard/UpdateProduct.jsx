@@ -1,22 +1,39 @@
 import { useForm } from "react-hook-form";
 import { FaEdit } from "react-icons/fa";
 import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import DashboardTitle from "../../components/DashboardTitle/DashboardTitle";
+import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const imgUploadKey = import.meta.env.VITE_IMAGE_UPLOAD_KEY
 const imgUploadAPI = `https://api.imgbb.com/1/upload?key=${imgUploadKey}`
 
 const UpdateProduct = () => {
-    const item = useLoaderData()
-    console.log(item)
-    const { _id, name, quantity, buyingPrice, profitMargin, discount, location, description, image } = useLoaderData()
+    const { id } = useParams()
+    console.log('use params id', id)
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
     const { user } = UseAuth()
+
+    const { data: products = [] } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/products`)
+            return res.data
+        }
+    })
+    console.log(products)
+
+    const product = products.filter(product => product._id === id)
+    console.log(product[0])
+
+    const { _id, name, quantity, buyingPrice, profitMargin, discount, location, description } = product[0]
+
 
     const onSubmit = async (data) => {
         console.log(data)
@@ -37,7 +54,7 @@ const UpdateProduct = () => {
                 description: data.description,
                 image: res.data.data.display_url
             }
-            const productResponse = await axiosPublic.patch(`/products/${_id}`, newProduct)
+            const productResponse = await axiosSecure.patch(`/products/update/${_id}`, newProduct)
             if (productResponse.data.modifiedCount > 0) {
                 Swal.fire({
                     position: "top-end",

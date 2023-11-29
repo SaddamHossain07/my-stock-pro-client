@@ -4,16 +4,16 @@ import { FcSalesPerformance } from "react-icons/fc";
 import { MdPointOfSale } from "react-icons/md";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../Hooks/useAxiosPublic/useAxiosPublic";
+import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 
 const SalesSummary = () => {
     const { user } = UseAuth()
     // console.log(user?.email)
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { data: sales = [] } = useQuery({
         queryKey: ['sales'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/sales`)
+            const res = await axiosSecure.get(`/sales`)
             return res.data
         }
     })
