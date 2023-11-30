@@ -1,14 +1,17 @@
 # myStock Pro
 
-## Live Link : 
+## Assignment Category: 
+assignment12_category_0018
+
+## Admin email & password: 
+buildyoursite18@gmail.com
+Saddam07%
+
+## Front-end Live Site Link: 
 - https://mystockpro-d8f17.web.app
 
-## Client side code link :
+## Client Side Github Repository Link: 
 - https://github.com/programming-hero-web-course1/b8a12-client-side-SaddamHossain07
 
-## Server side code link :
+## Server Side Github Repository Link: 
 - https://github.com/programming-hero-web-course1/b8a12-server-side-SaddamHossain07
-
-public_key=uGLNVVAaJv9hSNIIp
-private_key=n61YF2qHnucHMVykE-OPn
-service_id=service_9ub6anb

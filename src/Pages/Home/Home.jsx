@@ -4,6 +4,9 @@ import Showcase from "./Showcase/Showcase";
 import TopFeature from "./TopFeature/TopFeature";
 
 import logoImg from '../../assets/myStockLogo.png'
+import AllFeatures from "./AllFeatures/AllFeatures";
+import Summary from "./Summary/Summary";
+import AllProduct from "./AllProduct/AllProduct";
 
 const Home = () => {
 
@@ -16,6 +19,9 @@ const Home = () => {
             <Banner></Banner>
             <TopFeature></TopFeature>
             <Showcase></Showcase>
+            <AllFeatures></AllFeatures>
+            <Summary></Summary>
+            <AllProduct></AllProduct>
             <footer className="footer h-12 items-center px-4 bg-slate-300 -bottom-2 left-0 w-full border-t border-gray-300 text-xs flex justify-between">
                 <div>
                     <img className="w-10" src={logoImg} alt="" />
