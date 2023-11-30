@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import Logo from "../../components/Logo";
-import { FaCalendar, FaHome, FaList, FaPen, FaShoppingCart } from "react-icons/fa";
+import { FaCalendar, FaChartLine, FaHome, FaList, FaPen, FaShoppingCart, FaStoreAlt, FaUsers } from "react-icons/fa";
 import { MdSubscriptions } from "react-icons/md";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import useAdmin from "../../Hooks/useAdmin/useAdmin";
@@ -30,8 +30,20 @@ const Dashboard = () => {
                             {
                                 isAdmin ? <>
                                     <li>
+                                        <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/manageShop'>
+                                            <FaList className='mr-3' />
+                                            Manage Shop
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/adminSalesSummary'>
+                                            <FaChartLine className='mr-3' />
+                                            Summary
+                                        </NavLink>
+                                    </li>
+                                    <li>
                                         <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/users'>
-                                            <FaHome className='mr-3'></FaHome>
+                                            <FaUsers className='mr-3'></FaUsers>
                                             All Users
                                         </NavLink>
                                     </li>
@@ -69,7 +81,7 @@ const Dashboard = () => {
                                         </li>
                                         <li>
                                             <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/salesSummary'>
-                                                <FaList className='mr-3'></FaList>
+                                                <FaChartLine className='mr-3' />
                                                 Summary
                                             </NavLink>
                                         </li>
