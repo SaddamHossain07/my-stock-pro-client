@@ -17,7 +17,7 @@ const UserInfo = () => {
     return (
 
         <div className="hidden md:flex items-center gap-4 ml-auto">
-            <div className="flex flex-col items-end">
+            <div className="hidden lg:flex flex-col items-end">
                 <p className="font-semibold text-gray-500">{user?.displayName}</p>
                 {
                     role && <p className="text-xs ">({role})</p>

@@ -3,7 +3,7 @@ const AllFeatures = () => {
     return (
         <div className="p-8 w-full">
             <h2 className="text-4xl text-gray-600 font-bold">Our Features</h2>
-            <div className="mt-8 flex flex-col md:flex-row gap-16">
+            <div className="mt-8 flex flex-col md:flex-row md:gap-16">
                 <div className="w-full md:w-1/2">
                     <div className="mb-6">
                         <div className="flex justify-between">

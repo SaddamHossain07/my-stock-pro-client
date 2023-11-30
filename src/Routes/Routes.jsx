@@ -83,15 +83,15 @@ const Routes = createBrowserRouter([
             // },
             {
                 path: 'manageShop',
-                element: <ManageShop></ManageShop>
+                element: <AdminRoute><ManageShop></ManageShop></AdminRoute>
             },
             {
                 path: 'adminSalesSummary',
-                element: <AdminSalesSummary></AdminSalesSummary>
+                element: <AdminRoute><AdminSalesSummary></AdminSalesSummary></AdminRoute>
             },
             {
                 path: 'users',
-                element: <Users></Users>
+                element: <AdminRoute><Users></Users></AdminRoute>
             }
         ]
     }
