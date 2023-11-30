@@ -47,7 +47,8 @@ const Checkout = () => {
             salesDate: new Date(),
             cartIds: carts.map(item => item._id),
             cartProductIds: carts.map(item => item.productId),
-            productName: carts.map(item => item.name)
+            productName: carts.map(item => item.name),
+            email: user.email
         }
         const res = await axiosSecure.post('/sales', newSales)
         console.log(res.data)

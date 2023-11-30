@@ -9,20 +9,16 @@ import { Helmet } from "react-helmet";
 
 const SalesSummary = () => {
     const { user } = UseAuth()
-    // console.log(user?.email)
     const axiosSecure = useAxiosSecure()
-    const { data: sales = [] } = useQuery({
-        queryKey: ['sales'],
+
+    const { data: stats = [] } = useQuery({
+        queryKey: ['stats'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/sales`)
+            const res = await axiosSecure.get(`/sales-stats/${user?.email}`)
             return res.data
         }
     })
-    console.log(sales[0])
-    const sellingPrice = sales[0]?.sellingPrice || 0
-    const buyingPrice = sales[0]?.buyingPrice || 0
-    const salesProfit = sellingPrice - buyingPrice
-
+    console.log(stats)
 
     const { data: mySales = [] } = useQuery({
         queryKey: ['mySales'],
@@ -31,7 +27,6 @@ const SalesSummary = () => {
             return res.data
         }
     })
-
     console.log('this is my sell', mySales)
 
     return (
@@ -48,7 +43,7 @@ const SalesSummary = () => {
                                 <MdPointOfSale className="text-3xl" />
                             </div>
                             <div className="stat-title font-bold">Total Sales</div>
-                            <div className="stat-value text-purple-600">${sellingPrice}</div>
+                            <div className="stat-value text-purple-600">${stats?.totalSellingPrice}</div>
                             <div className="stat-desc">21% more than last month</div>
                         </div>
 
@@ -57,7 +52,7 @@ const SalesSummary = () => {
                                 <FaMoneyBillTrendUp className="text-3xl" />
                             </div>
                             <div className="stat-title font-bold">Total Invest</div>
-                            <div className="stat-value text-purple-600">${buyingPrice}</div>
+                            <div className="stat-value text-purple-600">${stats?.totalBuyingPrice}</div>
                             <div className="stat-desc">21% more than last month</div>
                         </div>
 
@@ -66,7 +61,7 @@ const SalesSummary = () => {
                                 <FcSalesPerformance className="text-3xl" />
                             </div>
                             <div className="stat-title font-bold">Total Profit</div>
-                            <div className="stat-value text-purple-600">${salesProfit}</div>
+                            <div className="stat-value text-purple-600">${stats?.profit}</div>
                             <div className="stat-desc">21% more than last month</div>
                         </div>
 
@@ -83,8 +78,34 @@ const SalesSummary = () => {
                                 <th>Profit</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            {
+                                mySales?.map((item, index) => <tr key={item._id}>
+                                    <td>
+                                        {index + 1}
+                                    </td>
+                                    <td>
+                                        <div className="font-semibold">{item.productName}</div>
+                                    </td>
+                                    <td>
+                                        <div className="font-semibold">{item.sellingDate}</div>
+                                    </td>
+                                    <td>
+                                        <div className="font-semibold">{item.profit}</div>
+                                    </td>
+                                </tr>)
+                            }
+                        </tbody>
 
                     </table>
+                    <div className="w-full flex justify-center">
+                        <div className="join my-4 text-center">
+                            <input className="join-item btn btn-sm btn-square" type="radio" name="options" aria-label="1" checked />
+                            <input className="join-item btn btn-sm btn-square" type="radio" name="options" aria-label="2" />
+                            <input className="join-item btn btn-sm btn-square" type="radio" name="options" aria-label="3" />
+                            <input className="join-item btn btn-sm btn-square" type="radio" name="options" aria-label="4" />
+                        </div>
+                    </div>
                 </div>
 
             </div>
