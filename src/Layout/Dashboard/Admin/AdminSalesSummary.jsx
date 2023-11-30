@@ -18,7 +18,6 @@ const AdminSalesSummary = () => {
             return res.data
         }
     })
-    console.log(admin)
 
     return (
         <>
@@ -34,7 +33,7 @@ const AdminSalesSummary = () => {
                                 <FaSackDollar className="text-3xl" />
                             </div>
                             <div className="stat-title font-bold">Total Income</div>
-                            <div className="stat-value text-purple-600">${admin.admin.income}</div>
+                            <div className="stat-value text-purple-600">${admin?.admin?.income}</div>
                             <div className="stat-desc">21% more than last month</div>
                         </div>
 
@@ -43,7 +42,7 @@ const AdminSalesSummary = () => {
                                 <MdOutlineProductionQuantityLimits className="text-3xl" />
                             </div>
                             <div className="stat-title font-bold">Total Product</div>
-                            <div className="stat-value text-purple-600">{admin.totalProduct}</div>
+                            <div className="stat-value text-purple-600">{admin?.totalProduct}</div>
                             <div className="stat-desc">21% more than last month</div>
                         </div>
                         <div className="stat">
@@ -51,7 +50,7 @@ const AdminSalesSummary = () => {
                                 <FaMoneyBillTrendUp className="text-3xl" />
                             </div>
                             <div className="stat-title font-bold">Total Sales</div>
-                            <div className="stat-value text-purple-600">{admin.totalSalesCount}</div>
+                            <div className="stat-value text-purple-600">{admin?.totalSalesCount}</div>
                             <div className="stat-desc">21% more than last month</div>
                         </div>
 
@@ -60,7 +59,7 @@ const AdminSalesSummary = () => {
                                 <FcSalesPerformance className="text-3xl" />
                             </div>
                             <div className="stat-title font-bold">Total Revenue</div>
-                            <div className="stat-value text-purple-600">${admin.revenue}</div>
+                            <div className="stat-value text-purple-600">${admin?.revenue}</div>
                             <div className="stat-desc">21% more than last month</div>
                         </div>
 

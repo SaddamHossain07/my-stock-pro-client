@@ -6,10 +6,13 @@ import { MdSubscriptions } from "react-icons/md";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import useAdmin from "../../Hooks/useAdmin/useAdmin";
 import logoImg from '../../assets/myStockLogo.png'
+import useManager from "../../Hooks/useManager/useManager";
 
 const Dashboard = () => {
     const { user } = UseAuth()
     const [isAdmin] = useAdmin()
+    const { role } = useManager()
+
 
     return (
         <div className="max-w-7xl mx-auto">
@@ -45,12 +48,6 @@ const Dashboard = () => {
                                         <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/users'>
                                             <FaUsers className='mr-3'></FaUsers>
                                             All Users
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink className='hover:bg-slate-200 rounded-r-full' to='/dashboard/userHome'>
-                                            <FaHome className='mr-3'></FaHome>
-                                            User Home
                                         </NavLink>
                                     </li>
                                 </>
@@ -91,6 +88,18 @@ const Dashboard = () => {
 
                             <div className="divider"></div>
 
+                            <div className="h-[140px] shadow-lg border border-slate-200 rounded-lg flex flex-col items-center">
+                                <img className="w-16 h-16 rounded-full z-10 border mt-2 mb-1" src={user?.photoURL} alt="" />
+                                <div>
+                                    <h3 className="font-semibold text-gray-600">{user?.displayName}</h3>
+                                    <p className="text-xs text-purple-600 italic">{user?.email}</p>
+                                    {
+                                        role && <p className="text-xs ">({role})</p>
+                                    }
+                                </div>
+                            </div>
+
+
 
 
                         </ul>
@@ -119,7 +128,7 @@ const Dashboard = () => {
                         </div>
 
                     </div>
-                    <footer className="footer absolute h-12 items-center px-4 rounded-b-xl bg-slate-300 -bottom-2 left-0 w-full border-t border-gray-300 text-xs flex justify-between">
+                    <footer className="footer absolute h-12 items-center px-4 rounded-b-xl bg-slate-200 -bottom-2 left-0 w-full border-t border-gray-100 text-xs flex justify-between">
                         <div>
                             <img className="w-10" src={logoImg} alt="" />
                         </div>

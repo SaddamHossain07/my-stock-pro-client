@@ -11,7 +11,7 @@ const useManager = () => {
     const [role, setRole] = useState('anonymous')
 
     const { data, isPending: isManagerLoading } = useQuery({
-        queryKey: ['loggedInUser'],
+        queryKey: ['user'],
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/${user.email}`)

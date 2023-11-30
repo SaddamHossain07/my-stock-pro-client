@@ -23,6 +23,17 @@ const SalesSummary = () => {
     const buyingPrice = sales[0]?.buyingPrice || 0
     const salesProfit = sellingPrice - buyingPrice
 
+
+    const { data: mySales = [] } = useQuery({
+        queryKey: ['mySales'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/sales/${user?.email}`)
+            return res.data
+        }
+    })
+
+    console.log('this is my sell', mySales)
+
     return (
         <>
             <Helmet>

@@ -7,11 +7,10 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 
 const SalesCard = ({ item, index }) => {
     const { user } = UseAuth()
-    // console.log('item ready for checkout', item)
-    const { _id, name, image, sellingPrice, profitMargin } = item
 
-    const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
+    const { _id, name, image, buyingPrice, sellingPrice, profitMargin } = item
+    const profit = sellingPrice - buyingPrice
 
     const handleAddForCheckOut = item => {
         const AddedItem = {
@@ -19,8 +18,9 @@ const SalesCard = ({ item, index }) => {
             shopManager: user.email,
             name,
             image,
+            buyingPrice,
             sellingPrice,
-            profitMargin
+            profit
         }
 
         axiosSecure.post('/carts', AddedItem)

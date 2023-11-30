@@ -3,9 +3,7 @@ import DashboardTitle from "../../components/DashboardTitle/DashboardTitle";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io"
 import { Link } from "react-router-dom";
 const Subscription = () => {
-    const subscriptionPack1 = 10
-    const subscriptionPack2 = 20
-    const subscriptionPack3 = 30
+
     return (
         <>
             <Helmet>

@@ -18,8 +18,9 @@ const Payment = () => {
             </Helmet>
             <div>
                 <DashboardTitle role={'Manager'} subPage={'Payment'}></DashboardTitle>
-                <h3>package : {packageValue}</h3>
-                <div className='bg-white mt-4 p-16'>
+                <h3 className='mt-3 bg-white text-xl font-semibold p-4'>subscribe to ${packageValue} package</h3>
+                <div className='bg-white mt-4 p-6'>
+                    <h3 className='text-3xl font-bold pb-4 text-purple-600 text-center'>Card Information</h3>
                     <div className='w-8/12 mx-auto bg-slate-200 shadow-xl rounded-xl'>
                         <Elements stripe={stripePromise}>
                             <CheckoutForm packageValue={packageValue} />
