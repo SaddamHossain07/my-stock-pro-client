@@ -1,5 +1,6 @@
 {
   "name": "my-stock-pro",
+  "homepage": "https://pytorial.com/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
