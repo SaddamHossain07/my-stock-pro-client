@@ -35,10 +35,9 @@ The Dashboard design is very unique and easy to handle. There are 2 deferent das
 
 4. Creating shop : 
 - when a user logged in the system will automatically redirect him to the create shop page so that he can create a shop for him and listing product for sale.
-
-The system is very helpful for a super shop or multi vendor E-commerce platform. So do not wast your time be a partner of myStock-Pro right now.
 <br/>
 <hr/>
+The system is very helpful for a super shop or multi vendor E-commerce platform. So do not wast your time be a partner of myStock-Pro right now.
 <br/>
 
 ## Please Visit myStock-Pro here check the demo : 
