@@ -40,7 +40,7 @@ The Dashboard design is very unique and easy to handle. There are 2 deferent das
 The system is very helpful for a super shop or multi vendor E-commerce platform. So do not wast your time be a partner of myStock-Pro right now.
 <br/>
 
-## Please Visit myStock-Pro here check the demo : 
+## Please Visit myStock-Pro here to check the demo : 
 - https://mystockpro-d8f17.web.app
 
 ### Admin email & password: 
