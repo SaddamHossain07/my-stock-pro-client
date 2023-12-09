@@ -1,6 +1,6 @@
 # myStock Pro
 
-myStock-Pro is a Inventory management system. Where user can listing there product and can sale a product, can track their stock and selling status. We integrated in this application a heigh secure authentication system and payment gateway. We use ReactJS and Tailwind CSS for front-end, Expressjs and noSQL database MongoDB in back-end. The client site is hosted on firebase and the server site is hosted on vercel.
+myStock-Pro is a Inventory management system. Where user can listing there product, able to sales product, track their stock and selling status. We integrated in this application a high secure authentication system and payment gateway. We use ReactJS and Tailwind CSS for front-end, Expressjs and noSQL database MongoDB in back-end. The client site is hosted on firebase and the server site is hosted on vercel.
 
 
 ## Technologies used for this project
@@ -18,12 +18,12 @@ myStock-Pro is a Inventory management system. Where user can listing there produ
 ## The best features of this project are are describe bellow --
 
 1. Unique Design : 
-The UI design of this system is very unique, visually appealing, eye catchy and professional. User experience will be satisfactory to navigate its all routes as wel as the dashboard. The Color contrast is pleasing to the eye and it's awesome functionalities served the purpose very well.
+The UI design of this system is very unique, visually appealing, eye catchy and more professional. User experience will be satisfactory to navigate its all routes as wel as the dashboard. The Color contrast is pleasing to the eye and it's awesome functionalities served the purpose very well.
 
 2. Authentication System:
 We use firebase authentication system with JWT token verification. User can login/sign up using Google Account or Email and Password in this website.
 
-The role base authentication system is one of the best feature of this application. there are 3 kinds of user can register here, like Admin, Shop Manager and general user. When an user logged in the system will guide the user to navigate his personal interface and dashboard so that the user can play his role securely.
+The role base authentication system is one of the best feature of this application. there are 3 kinds of user can register here, like Admin, Shop Manager and general user. When an user logged in, the system will guide the user to navigate his personal interface and dashboard so that the user can play his role securely.
 
 3. Dashboard :
 The Dashboard design is very unique and easy to handle. There are 2 deferent dashboard for the Shop-Manager and System-Admin.
